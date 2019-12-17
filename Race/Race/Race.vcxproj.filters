@@ -16,54 +16,57 @@
     <Filter Include="SOIL">
       <UniqueIdentifier>{9414d66f-56ce-4e57-acc1-7a29a911b302}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Glm">
+      <UniqueIdentifier>{f39655a5-dc92-4ebf-ad22-97da461b2349}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="image_DXT.c">
-      <Filter>SOIL</Filter>
-    </ClCompile>
-    <ClCompile Include="image_helper.c">
-      <Filter>SOIL</Filter>
-    </ClCompile>
-    <ClCompile Include="SOIL.c">
-      <Filter>SOIL</Filter>
-    </ClCompile>
-    <ClCompile Include="stb_image_aug.c">
-      <Filter>SOIL</Filter>
-    </ClCompile>
     <ClCompile Include="InitGame.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="glm.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="SOIL\image_DXT.c">
+      <Filter>SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="SOIL\image_helper.c">
+      <Filter>SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="SOIL\SOIL.c">
+      <Filter>SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="SOIL\stb_image_aug.c">
+      <Filter>SOIL</Filter>
+    </ClCompile>
+    <ClCompile Include="Glm\glm.cpp">
+      <Filter>Glm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="InitGame.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="glm.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="image_DXT.h">
+    <ClInclude Include="SOIL\image_DXT.h">
       <Filter>SOIL</Filter>
     </ClInclude>
-    <ClInclude Include="image_helper.h">
+    <ClInclude Include="SOIL\image_helper.h">
       <Filter>SOIL</Filter>
     </ClInclude>
-    <ClInclude Include="SOIL.h">
+    <ClInclude Include="SOIL\SOIL.h">
       <Filter>SOIL</Filter>
     </ClInclude>
-    <ClInclude Include="stb_image_aug.h">
+    <ClInclude Include="SOIL\stb_image_aug.h">
       <Filter>SOIL</Filter>
     </ClInclude>
-    <ClInclude Include="stbi_DDS_aug.h">
+    <ClInclude Include="SOIL\stbi_DDS_aug.h">
       <Filter>SOIL</Filter>
     </ClInclude>
-    <ClInclude Include="stbi_DDS_aug_c.h">
+    <ClInclude Include="SOIL\stbi_DDS_aug_c.h">
       <Filter>SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="Glm\glm.h">
+      <Filter>Glm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
