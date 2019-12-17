@@ -119,17 +119,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Glm\glm.cpp" />
     <ClCompile Include="InitGame.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Road.cpp" />
     <ClCompile Include="SOIL\image_DXT.c" />
     <ClCompile Include="SOIL\image_helper.c" />
     <ClCompile Include="SOIL\SOIL.c" />
     <ClCompile Include="SOIL\stb_image_aug.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Glm\glm.h" />
     <ClInclude Include="InitGame.h" />
+    <ClInclude Include="Road.h" />
     <ClInclude Include="SOIL\image_DXT.h" />
     <ClInclude Include="SOIL\image_helper.h" />
     <ClInclude Include="SOIL\SOIL.h" />
