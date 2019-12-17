@@ -1,5 +1,5 @@
 #pragma once
-#include "glm.h"
+#include "Glm/glm.h"
 void InitGame(int, char **);
 void WindowResize(int, int);
 extern GLMmodel* car;

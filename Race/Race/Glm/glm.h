@@ -12,7 +12,7 @@
  */
 
 #pragma once
-#include "GL/freeglut.h"
+#include "../GL/freeglut.h"
 
 /*#ifndef M_PI
 

@@ -1,7 +1,7 @@
 #include "GL/freeglut.h"
-#include "SOIL.h"
+#include "SOIL/SOIL.h"
 #include "InitGame.h"
-#include "glm.h"
+#include "Glm/glm.h"
 GLMmodel* car;
 GLuint texture;
 void InitGame(int argc, char **argv)
