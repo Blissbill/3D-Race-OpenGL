@@ -1,12 +1,6 @@
 #pragma once
 #include "Glm/glm.h"
-#include "Enums.h"
-
-struct Point
-{
-	float x;
-	float y;
-};
+#include "Common.h"
 
 class Car
 {
@@ -14,11 +8,14 @@ class Car
 	GLMmodel* car;
 	GLMmodel* tyre;
 public:
-	Point Position;
+	Point position;
+	float speed;
 	Car(GLuint *textures, GLMmodel** models)
 	{
-		Position.x = 0;
-		Position.y = 0;
+		position.x = 0;
+		position.y = 0;
+		position.z = 0;
+		speed = 100;
 		this->textures = textures;
 		car = models[enums::Car];
 		tyre = models[enums::Tyre];
@@ -27,4 +24,5 @@ public:
 	GLMmodel* GetModelCar() const;
 	GLMmodel* GetModelTyre() const;
 	GLuint* GetModelTextures() const;
+	void DrawCar() const;
 };

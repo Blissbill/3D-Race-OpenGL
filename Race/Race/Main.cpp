@@ -6,6 +6,7 @@
 
 Car *porsche;
 Road *road;
+Camera *camera;
 
 void draw();
 int main(int argc, char **argv)
