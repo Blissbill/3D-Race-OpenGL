@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Common.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Glm\glm.cpp" />
     <ClCompile Include="InitGame.cpp" />

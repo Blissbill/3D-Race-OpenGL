@@ -4,21 +4,23 @@
 
 class Car
 {
-	GLuint * textures;
+	GLuint carTexture;
+	GLuint tyreTexture;
 	GLMmodel* car;
 	GLMmodel* tyre;
 public:
 	Point position;
 	float speed;
-	Car(GLuint *textures, GLMmodel** models)
+	Car(GLuint carTexture, GLuint tyreTexture, GLMmodel* carModel, GLMmodel* tyreModel)
 	{
 		position.x = 0;
 		position.y = 0;
 		position.z = 0;
 		speed = 100;
-		this->textures = textures;
-		car = models[enums::Car];
-		tyre = models[enums::Tyre];
+		this->carTexture = carTexture;
+		this->tyreTexture = tyreTexture;
+		car = carModel;
+		tyre = tyreModel;
 	}
 
 	GLMmodel* GetModelCar() const;

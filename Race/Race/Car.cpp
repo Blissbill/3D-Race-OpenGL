@@ -24,18 +24,6 @@ void Car::DrawCar() const
 	glmDraw(GetModelCar(), GLM_SMOOTH | GLM_TEXTURE);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	glBegin(GL_LINES);
-	glColor3f(1, 1, 1);
-	glVertex3d(-10 + position.x, position.y, position.z);
-	glVertex3d(10 + position.x, position.y, position.z);
-
-	glVertex3d(position.x, -10 + position.y, position.z);
-	glVertex3d(position.x, 10 + position.y, position.z);
-
-	glVertex3d(position.x, position.y, -10 + position.z);
-	glVertex3d(position.x, position.y, 10 + position.z);
-
-	glEnd();
 }
 
 

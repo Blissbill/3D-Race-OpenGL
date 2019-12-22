@@ -7,10 +7,13 @@ GLuint Road::GetTexture() const
 void Road::DrawRoad(float speed) const
 {
 	glEnable(GL_TEXTURE_2D);
-	glPushMatrix();
-	glMatrixMode(GL_TEXTURE);
-	glTranslatef(0, speed, 0);
 	glBindTexture(GL_TEXTURE_2D, GetTexture());
+	glMatrixMode(GL_TEXTURE);
+	glPushMatrix();
+	
+	
+	glTranslatef(0, speed, 0);
+	
 
 	glBegin(GL_QUADS);
 

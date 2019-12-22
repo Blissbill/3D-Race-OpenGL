@@ -3,12 +3,24 @@ float deltaAngle = 0.0f;
 int xOrigin = -1;
 int yOrigin = -1;
 float speed;
+
+Car *porsche;
+Road *road;
+Camera *camera;
+
 void StartGame()
 {
+	camera = new Camera();
+	camera->position.x = 0;
+	camera->position.y = 0;
+	camera->position.z = 10;
+	porsche = new Car(textures[enums::Car], textures[enums::Tyre] , models[enums::Car], models[enums::Tyre]);
+	road = new Road(textures[enums::Road]);
+	road->width = 10;
 	glutDisplayFunc(Draw);
 	glutSpecialFunc(SpecialKeys);
 	glutIdleFunc(Draw);
-	//GameLoop(0);
+	GameLoop(0);
 	speed = 0;
 	porsche->position.z = 2;
 	camera->position.x = porsche->position.x;
@@ -41,8 +53,8 @@ void SpecialKeys(int key, int xx, int yy) {
 	case GLUT_KEY_UP:
 		//camera->position.x += camera->direction.x * fraction;
 		//camera->position.z += camera->direction.z * fraction;
-		porsche->position.z -= fraction;
-		camera->position.z = porsche->position.z;
+		/*porsche->position.z -= fraction;
+		camera->position.z = porsche->position.z;*/
 		/*camera->angle += 0.1;
 		camera->direction.y = sin(camera->angle);
 		camera->direction.x = -cos(camera->angle);*/
@@ -50,8 +62,8 @@ void SpecialKeys(int key, int xx, int yy) {
 	case GLUT_KEY_DOWN:
 		//camera->position.x -= camera->direction.x * fraction;
 		//camera->position.z -= camera->direction.z * fraction;
-		porsche->position.z += fraction;
-		camera->position.z = porsche->position.z;
+		/*porsche->position.z += fraction;
+		camera->position.z = porsche->position.z;*/
 		break;
 	}
 }
@@ -96,21 +108,80 @@ void Draw()
 {
 	glLoadIdentity();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//gluLookAt(0, 3, 10, 0, 0,2, 0, 1, 0);
+	DrawSky();
 	camera->DrawCamera();
+	//rightEarth->DrawEarth(speed, road->width);
+	//leftEarth->DrawEarth(speed, road->width);
+	DrawEarth();
 	road->DrawRoad(speed);
 	porsche->DrawCar();
-	glBegin(GL_LINES);
+	glutSwapBuffers();
+}
+void DrawSky()
+{
+	glEnable(GL_TEXTURE_2D);
+	glPushMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glBindTexture(GL_TEXTURE_2D, textures[enums::Sky]);
+	glBegin(GL_QUADS);
+
 	glColor3f(1, 1, 1);
-	glVertex3d(-10, 0, 0);
-	glVertex3d(10, 0, 0);
-
-	glVertex3d(0, -10, 0);
-	glVertex3d(0, 10, 0);
-
-	glVertex3d(0, 0, -10);
-	glVertex3d(0, 0, 10);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3d(80, 30, -100);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3d(-80, 30, -100);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3d(-80, -30, -100);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3d(80, -30, -100);
 
 	glEnd();
-	glutSwapBuffers();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
+}
+void DrawEarth()
+{
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textures[enums::Earth]);
+	glPushMatrix();
+	glMatrixMode(GL_TEXTURE);
+	glTranslatef(0, -speed, 0);
+	
+	glBegin(GL_QUADS);
+	
+	glColor3f(1, 1, 1);
+	
+	glTexCoord2f(2.0, 8.0);
+	glVertex3d(60, 0, -100);
+	
+	glTexCoord2f(0.0, 8.0);
+	glVertex3d(0 + road->width/2, 0, -100);
+	
+	glTexCoord2f(0.0, 0.0);
+	glVertex3d(0 + road->width/2, 0, 100);
+	
+	glTexCoord2f(2.0, 0.0);
+	glVertex3d(60, 0, 100);
+
+	glEnd();
+	
+	glBegin(GL_QUADS);
+
+	glColor3f(1, 1, 1);
+
+	glTexCoord2f(2.0, 8.0);
+	glVertex3d(0 - road->width/2, 0, -100);
+
+	glTexCoord2f(0.0, 8.0);
+	glVertex3d(-60, 0, -100);
+
+	glTexCoord2f(0.0, 0.0);
+	glVertex3d(-60, 0, 100);
+
+	glTexCoord2f(2.0, 0.0);
+	glVertex3d(0 - road->width/2, 0, 100);
+
+	glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
 }

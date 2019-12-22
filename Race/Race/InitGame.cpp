@@ -1,12 +1,7 @@
 #include "InitGame.h"
-GLuint * textures;
 void InitGame(int argc, char **argv)
 {
 	glutInit(&argc, argv);
-	camera = new Camera();
-	camera->position.x = 0;
-	camera->position.y = 0;
-	camera->position.z = 10;
 	glutInitWindowPosition(200, 200);
 	glutInitWindowSize(1366, 768);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -18,6 +13,13 @@ void InitGame(int argc, char **argv)
 	glEnable(GL_TEXTURE_2D);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	glutReshapeFunc(WindowResize);
+	glEnable(GL_LIGHTING);
+	glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+	GLfloat light1_diffuse[] = { 1.0, 1.0, 1.0 };
+	glEnable(GL_LIGHT1);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diffuse);
+	GLfloat light1_position[] = { 0, 3, 10, 1.0 };
+	glLightfv(GL_LIGHT1, GL_POSITION, light1_position);
 	//glutIgnoreKeyRepeat(1);
 	/*glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	
@@ -44,7 +46,7 @@ void WindowResize(int w, int h)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45, 1.0f * w / h, 1, 100);
+	gluPerspective(45, 1.0f * w / h, 1, 120);
 	gluLookAt(0, 3, 10, 0, 0, 0, 0, 1, 0);
 	glMatrixMode(GL_MODELVIEW);
 
@@ -52,31 +54,46 @@ void WindowResize(int w, int h)
 
 void LoadResources()
 {
+	textures = new GLuint[20];
+	models = new GLMmodel*[20];
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-	GLuint *texture = new GLuint[2];
-	GLMmodel ** models = new GLMmodel*[2];
 	models[enums::Car] = glmReadOBJ(const_cast<char*>("Resources/car.obj"));
 	models[enums::Tyre] = glmReadOBJ(const_cast<char*>("Resources/tyre.obj"));
-	texture[enums::Car] = SOIL_load_OGL_texture
+	textures[enums::Car] = SOIL_load_OGL_texture
 	(
 		"Resources/car.jpg",
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
 	);
-	texture[enums::Tyre] = SOIL_load_OGL_texture
+	textures[enums::Tyre] = SOIL_load_OGL_texture
 	(
 		"Resources/Tyre.jpg",
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
 	);
-	porsche = new Car(texture, models);
-	road = new Road(SOIL_load_OGL_texture
+	
+	textures[enums::Road] = SOIL_load_OGL_texture
 	(
 		"Resources/road.jpg",
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
-	));
+	);
+	
+	textures[enums::Sky] = SOIL_load_OGL_texture
+	(
+		"Resources/sky.jpg",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
+	);
+	textures[enums::Earth] = SOIL_load_OGL_texture
+	(
+		"Resources/earth.jpg",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
+	);
 }
