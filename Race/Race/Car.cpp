@@ -20,6 +20,7 @@ void Car::DrawCar() const
 	glEnable(GL_TEXTURE_2D);
 	glMatrixMode(GL_MODELVIEW);
 	glTranslatef(position.x, 0.6, position.z);
+	glRotatef(rot, 0, 1, 0);
 	glBindTexture(GL_TEXTURE_2D, GetModelTextures()[enums::Car]);
 	glmDraw(GetModelCar(), GLM_SMOOTH | GLM_TEXTURE);
 	glDisable(GL_TEXTURE_2D);

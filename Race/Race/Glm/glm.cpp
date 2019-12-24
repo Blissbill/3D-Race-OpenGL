@@ -12,7 +12,7 @@
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "Glm/glm.h"
+#include "glm.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

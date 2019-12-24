@@ -19,6 +19,7 @@ void StartGame()
 	road->width = 10;
 	glutDisplayFunc(Draw);
 	glutSpecialFunc(SpecialKeys);
+	glutSpecialUpFunc(SpecialKeysUp);
 	glutIdleFunc(Draw);
 	GameLoop(0);
 	speed = 0;
@@ -34,21 +35,36 @@ void GameLoop(int value)
 	glutPostRedisplay();
 	glutTimerFunc(1000 / 60, GameLoop, 0);
 	speed -= porsche->speed / 10000;
+	
 	if (speed < 0)speed = (1 + speed);
 }
-
+void SpecialKeysUp(int key, int xx, int yy)
+{
+	switch (key) {
+	case GLUT_KEY_LEFT:
+		porsche->rot = 0;
+		break;
+	case GLUT_KEY_RIGHT:
+		porsche->rot = 0;
+		break;
+	}
+}
 void SpecialKeys(int key, int xx, int yy) {
 	float fraction = 1;
 	switch (key) {
 	case GLUT_KEY_LEFT:
-		camera->angle += 1;
+		/*camera->angle += 1;
 		camera->direction.x = sin(ATOR(camera->angle));
-		camera->direction.z = -cos(ATOR(camera->angle));
+		camera->direction.z = -cos(ATOR(camera->angle));*/
+		porsche->rot = 30;
+		porsche->position.x -= speed;
 		break;
 	case GLUT_KEY_RIGHT:
-		camera->angle -= 1;
+		/*camera->angle -= 1;
 		camera->direction.x = sin(ATOR(camera->angle));
-		camera->direction.z = -cos(ATOR(camera->angle));
+		camera->direction.z = -cos(ATOR(camera->angle));*/
+		porsche->rot = -30;
+		porsche->position.x += speed;
 		break;
 	case GLUT_KEY_UP:
 		//camera->position.x += camera->direction.x * fraction;
@@ -127,13 +143,13 @@ void DrawSky()
 
 	glColor3f(1, 1, 1);
 	glTexCoord2f(1.0, 1.0);
-	glVertex3d(80, 30, -100);
+	glVertex3d(120, 60, -100);
 	glTexCoord2f(0.0, 1.0);
-	glVertex3d(-80, 30, -100);
+	glVertex3d(-120, 60, -100);
 	glTexCoord2f(0.0, 0.0);
-	glVertex3d(-80, -30, -100);
+	glVertex3d(-120, -60, -100);
 	glTexCoord2f(1.0, 0.0);
-	glVertex3d(80, -30, -100);
+	glVertex3d(120, -60, -100);
 
 	glEnd();
 	glPopMatrix();
