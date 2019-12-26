@@ -2,13 +2,13 @@
 #include "Glm/glm.h"
 #include "Common.h"
 
-class Road
+class Road//Класс, описывающий дорогу
 {
-	GLuint texture;
+	GLuint texture;//Хранит текстуру дороги
 public:
-	Point position;
-	float width;
-	Road(GLuint texture)
+	Point position;//Хранит позицию дороги
+	float width;//Хранит ширину дороги
+	Road(GLuint texture)//Конструктор
 	{
 		position.x = 0;
 		position.y = 0;
@@ -16,7 +16,7 @@ public:
 		width = 7;
 		this->texture = texture;
 	}
-	GLuint GetTexture() const;
-	void DrawRoad(float) const;
+	GLuint GetTexture() const;//Метод возвращающий текстуру дороги
+	void DrawRoad(float) const;////Метод рисующий дорогу
 	
 };

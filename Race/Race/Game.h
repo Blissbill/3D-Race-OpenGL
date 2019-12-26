@@ -3,7 +3,7 @@
 #include "Glm/glm.h"
 #include "Car.h"
 #include "Road.h"
-#include "Camera.h"
+#include <cstdio>
 
 void GameLoop(int);
 void StartGame();
@@ -12,5 +12,10 @@ void DrawSky();
 void DrawEarth();
 void SpecialKeys(int, int, int);
 void SpecialKeysUp(int, int, int);
-void mouseButton(int, int, int, int);
-void mouseMove(int, int);
+void UpdatePosition();
+void glutPrint(float, float, LPVOID, char*, float, float, float, float);
+void RenderScore();
+void DrawGameOver();
+void NewGame();
+void processNormalKeys(unsigned char, int, int);
+void DrawMenu();

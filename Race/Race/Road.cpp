@@ -8,9 +8,8 @@ void Road::DrawRoad(float speed) const
 {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, GetTexture());
-	glMatrixMode(GL_TEXTURE);
 	glPushMatrix();
-	
+	glMatrixMode(GL_TEXTURE);
 	
 	glTranslatef(0, speed, 0);
 	
@@ -35,4 +34,3 @@ void Road::DrawRoad(float speed) const
 	glPopMatrix();
 	glDisable(GL_TEXTURE_2D);
 }
-

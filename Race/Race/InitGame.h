@@ -3,6 +3,7 @@
 #include "SOIL/SOIL.h"
 #include "Glm/glm.h"
 #include "Common.h"
+#include <ctime>
 
 extern GLuint *textures;
 extern GLMmodel **models;

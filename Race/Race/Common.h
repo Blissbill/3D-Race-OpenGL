@@ -6,11 +6,11 @@
 #define ATOR(x) x * M_PI/180.0f
 extern GLuint *textures;
 extern GLMmodel **models;
-struct Point
+struct Point//Структура, описывающая позицию объектов
 {
-	float x;
-	float y;
-	float z;
+	float x;//Координата по X
+	float y;//Координата по Y
+	float z;//Координата по Z
 };
 namespace enums
 {
@@ -20,6 +20,16 @@ namespace enums
 		Tyre,
 		Road,
 		Sky,
-		Earth
+		Earth,
+		GameEnd,
+		Background,
+		MenuText,
+		CarEnemy
+	};
+	enum Flags
+	{
+		Game,
+		Menu,
+		GameOver
 	};
 }

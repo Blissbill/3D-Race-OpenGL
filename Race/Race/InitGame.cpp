@@ -1,6 +1,8 @@
 #include "InitGame.h"
+
 void InitGame(int argc, char **argv)
 {
+	srand(time(0));
 	glutInit(&argc, argv);
 	glutInitWindowPosition(200, 200);
 	glutInitWindowSize(1366, 768);
@@ -11,14 +13,15 @@ void InitGame(int argc, char **argv)
 	glEnable(GL_CULL_FACE);//glFrontFace()for GL_CW or GL_CCW
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_COLOR_MATERIAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	glutReshapeFunc(WindowResize);
-	glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHTING);
 	glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
 	GLfloat light1_diffuse[] = { 1.0, 1.0, 1.0 };
 	glEnable(GL_LIGHT1);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diffuse);
-	GLfloat light1_position[] = { 0, 3, 10, 1.0 };
+	GLfloat light1_position[] = { 0, 0, 10, 1.0 };
 	glLightfv(GL_LIGHT1, GL_POSITION, light1_position);
 	//glutIgnoreKeyRepeat(1);
 	/*glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
@@ -92,6 +95,34 @@ void LoadResources()
 	textures[enums::Earth] = SOIL_load_OGL_texture
 	(
 		"Resources/earth.jpg",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
+	);
+	textures[enums::GameEnd] = SOIL_load_OGL_texture
+	(
+		"Resources/go.png",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
+	);
+	textures[enums::Background] = SOIL_load_OGL_texture
+	(
+		"Resources/bg.jpg",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
+	);
+	textures[enums::MenuText] = SOIL_load_OGL_texture
+	(
+		"Resources/menu_text.png",
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
+	);
+	textures[enums::CarEnemy] = SOIL_load_OGL_texture
+	(
+		"Resources/care.jpg",
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_INVERT_Y
